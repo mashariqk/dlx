@@ -54,7 +54,12 @@ fn main() {
         if confirm.eq("yes\n") {
             for (file, _) in files {
                 println!("Deleting {:?}", file);
-                fs::remove_file(&file).expect(format!("Failed to delete: {:?}", file).as_str());
+                match fs::remove_file(&file) {
+                    Ok(_) => {}
+                    Err(e) => {
+                        eprintln!(format!("Failed to delete: {:?} due to error: {:#?}", file,e))
+                    }
+                }
             }
         }
     }
