@@ -57,7 +57,7 @@ fn main() {
                 match fs::remove_file(&file) {
                     Ok(_) => {}
                     Err(e) => {
-                        eprintln!(format!("Failed to delete: {:?} due to error: {:#?}", file,e))
+                        eprintln!("Failed to delete: {:?} due to error: {:#?}", file, e)
                     }
                 }
             }
